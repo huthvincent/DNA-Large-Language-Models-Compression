@@ -7,6 +7,8 @@ This folder provides a cleaned-up subset of the original `bionemo_evo2_project_A
 
 ---
 
+![DNA LLM compress overview](./Fig_1.png)
+
 ## 1. Environment Setup
 
 1. **Docker image (BioNeMo)**  
