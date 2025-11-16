@@ -106,7 +106,7 @@ Measures the GPU-memory footprint for (i) the base Evo-2 forward (full-sequence)
 
 ## 4. Configuration Quick Reference
 
-`configs/summary_config.generated.yaml` mirrors the original Activation-Beacon run with terminology updated for summary tokens. Important fields:
+Important fields:
 
 - `insert_every_n = 100`: place one summary token after every 100 DNA bases.
 - `beacons_per_block = 1`: one summary token per block; each token summarizes exactly one $k$-mer.
@@ -114,7 +114,7 @@ Measures the GPU-memory footprint for (i) the base Evo-2 forward (full-sequence)
 - `block_len = 1024`: streaming chunk size (also used by `eval_memory.py`).
 - `special_tokens.beacon_token = '~'`: the actual summary token symbol and ID (126). We keep the key name for compatibility, but treat it as the “FOCUS token” throughout the documentation.
 
-Train/eval hyperparameters (learning rate, warm-up, dataset paths, etc.) are identical to the chr1 Activation-Beacon experiment and can be tweaked in this YAML before re-running training.
+Train/eval hyperparameters (learning rate, warm-up, dataset paths, etc.) are identical to the chr1 experiment and can be tweaked in this YAML before re-running training.
 
 ---
 
