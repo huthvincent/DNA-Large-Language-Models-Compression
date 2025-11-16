@@ -22,12 +22,12 @@ This folder provides a cleaned-up subset of the original `bionemo_evo2_project_A
    Inside the container, assume `/workspace/FOCUS` is the mount point for this folder and `/workspace/bionemo-framework` hosts the full BioNeMo stack (required for the `beacon.*` Python modules). Set:
    ```bash
    export PYTHONPATH=/workspace/bionemo-framework/workspace/vendor:\
-/workspace/bionemo-framework/workspace/vendor/bionemo/sub-packages/bionemo-core/src:\
-/workspace/bionemo-framework/workspace/vendor/bionemo/sub-packages/bionemo-llm/src:\
-/workspace/bionemo-framework/workspace/vendor/bionemo/sub-packages/bionemo-evo2/src:\
-/workspace/bionemo-framework/workspace/vendor/bionemo/3rdparty/NeMo:\
-/workspace/bionemo-framework/workspace/vendor/bionemo/3rdparty/Megatron-LM:\
-/workspace/FOCUS:$PYTHONPATH
+   /workspace/bionemo-framework/workspace/vendor/bionemo/sub-packages/bionemo-core/src:\
+   /workspace/bionemo-framework/workspace/vendor/bionemo/sub-packages/bionemo-llm/src:\
+   /workspace/bionemo-framework/workspace/vendor/bionemo/sub-packages/bionemo-evo2/src:\
+   /workspace/bionemo-framework/workspace/vendor/bionemo/3rdparty/NeMo:\
+   /workspace/bionemo-framework/workspace/vendor/bionemo/3rdparty/Megatron-LM:\
+   /workspace/FOCUS:$PYTHONPATH
    ```
 
 3. **Model checkpoints**  
