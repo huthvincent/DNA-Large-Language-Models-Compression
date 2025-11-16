@@ -1,6 +1,6 @@
 # FOCUS: Near-Lossless Model Compression Enables Longer Context Inference in DNA Large Language Models
 
-This folder provides a cleaned-up subset of the original `bionemo_evo2_project_AB_compress` repository, focusing on the evaluation utilities for the summary-token (FOCUS) adapter trained on Evo-2 7B. Summary tokens (sometimes called *FOCUS tokens*) replace the old “Activation Beacon” terminology: they are the compact, trainable markers inserted every *k* bases to retain long-range context.
+This project focus on the evaluation utilities for the summary-token (FOCUS) adapter trained on Evo-2 7B. Summary tokens (sometimes called *FOCUS tokens*): they are the compact, trainable markers inserted every *k* bases to retain long-range context.
 
 > **Citation**  
 > Zhu, R., Zhou, X., Tang, H., Scherer, S. W., & Ohno-Machado, L. (2025). *Near-Lossless Model Compression Enables Longer Context Inference in DNA Large Language Models*, pp. 2025–11.
