@@ -46,7 +46,7 @@ For reproducibility, `data/` includes short placeholder files (e.g., `data/GRCh3
 
 All scripts live in `scripts/` and default to the structure under `output/focus_runs/chr1`. Pass `--help` to view full arguments.
 
-### 3.1 Summary-token distribution metrics (GRCh38)
+### Summary-token distribution metrics (GRCh38)
 
 ```bash
 python scripts/eval_summary_metrics.py \
@@ -60,47 +60,6 @@ python scripts/eval_summary_metrics.py \
   --output output/focus_runs/chr1/outputs/GRCh38/summary.tsv
 ```
 This compares next-token distributions between the summary adapter and the frozen base model on GRCh38 chromosome slices, writing both per-chromosome CSVs and a TSV summary. Summary tokens and base tokens are evaluated with the same tokenizer; only the adapter’s internal attention differs.
-
-### 3.2 OpenGenome2 batch evaluation
-
-```bash
-python scripts/eval_summary_metrics_opengenome2.py \
-  --run-dir output/focus_runs/chr1 \
-  --base-model checkpoints/evo2_7b_nemo_flattened \
-  --tar-path data/OpenGenome2/batch1_sample.tar \
-  --segment-length 1024 \
-  --num-seqs 100 \
-  --batch-size 4 \
-  --output output/focus_runs/chr1/outputs/OpenGenome2/summary.tsv
-```
-Reads FASTA entries from a tarball (gzipped or plain) and samples random segments to assess the adapter vs. baseline divergence.
-
-### 3.3 Virus validation evaluation
-
-```bash
-python scripts/eval_summary_metrics_virus.py \
-  --run-dir output/focus_runs/chr1 \
-  --base-model checkpoints/evo2_7b_nemo_flattened \
-  --csv-path data/Virus/virus_val_sample.csv \
-  --segment-length 1024 \
-  --num-seqs 200 \
-  --batch-size 4 \
-  --output output/focus_runs/chr1/outputs/Virus/summary.tsv
-```
-Loads two-column CSVs (`sequence,label`) and samples segments uniformly at random, mirroring the GRCh38 workflow.
-
-### 3.4 Memory profiling
-
-```bash
-python scripts/eval_memory.py \
-  --run-dir output/focus_runs/chr1 \
-  --base-model checkpoints/evo2_7b_nemo_flattened \
-  --lengths "5000,10000,20000,40000,80000,160000" \
-  --chunk-size 1024 \
-  --output output/focus_runs/chr1/outputs/memory/memory.csv \
-  --save-fasta
-```
-Measures the GPU-memory footprint for (i) the base Evo-2 forward (full-sequence) and (ii) the summary adapter’s streaming inference. It records `peak_alloc_mb` and `peak_reserved_mb`, plus the number of retained summary tokens, for downstream plotting.
 
 ---
 
