@@ -1,0 +1,3 @@
+>sample_genome
+ACGTACGTACGTACGTACGTACGT
+EOF && tar -cf /data2/zhu11/FOCUS/data/OpenGenome2/batch1_sample.tar -C /data2/zhu11/FOCUS/temp_open_genome batch1 && rm -rf /data2/zhu11/FOCUS/temp_open_genome

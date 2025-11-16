@@ -1,0 +1,70 @@
+# Focus summary-token configuration derived from the Activation-Beacon run.
+# Field names mirror the original implementation for compatibility.
+backend: bionemo
+model_name_or_path: checkpoints/evo2_7b_nemo_flattened
+insert_every_n: 100
+beacons_per_block: 1
+condense_ratio: 100
+block_len: 1024
+freeze_base: true
+max_position_embeddings: 131072
+special_tokens:
+  beacon_token: '~'  # Treated as the summary (FOCUS) token ID.
+  beacon_token_id: 126
+train:
+  epochs: 1
+  lr: 0.0001
+  weight_decay: 0.01
+  warmup_steps: 200
+  batch_size: 1
+  grad_accum: 4
+  mixed_precision: bf16
+  random_ratio_sampling: false
+  ratio_range:
+  - 100
+  - 100
+  seed: 42
+  dataset:
+    loader: jsonl
+    path: /workspace/bionemo-framework/workspace/data/ab_grch38_chr1_train.jsonl
+    split: train
+    text_field: text
+    validation_fraction: 0.0
+infer:
+  max_new_tokens: 1024
+  temperature: 0.8
+  top_p: 0.95
+  repetition_penalty: 1.0
+  sliding_window: 512
+  baseline_cache: ${MOUNT_IN_CONTAINER}/output/baseline_metrics.json
+success_thresholds:
+  memory_drop_min: 0.3
+  quality_drop_max: 0.05
+  speedup_min: 0.0
+metrics:
+  eval_tasks:
+  - name: perplexity
+    loader: jsonl
+    path: /workspace/bionemo-framework/workspace/data/ab_grch38_chr1_val.jsonl
+    split: train
+    text_field: text
+    max_samples: 512
+  baseline_model_name_or_path: checkpoints/evo2_7b_nemo_flattened
+  baseline_backend: bionemo
+  results_path: output/ab_runs/ab_chr1/outputs/results.json
+paths:
+  data_dir: output/ab_runs/ab_chr1/data
+  output_dir: output/ab_runs/ab_chr1/outputs
+  checkpoint_dir: output/ab_runs/ab_chr1/checkpoints
+  log_dir: output/ab_runs/ab_chr1/logs
+bionemo:
+  model_size: 7b
+  seq_length: 512
+  fp8: false
+  use_te: true
+  tokenizer: byte-level
+  checkpoint_dir: ${MOUNT_IN_CONTAINER}/checkpoints/evo2_7b_nemo
+logging:
+  log_every: 10
+  eval_every: 1000
+  checkpoint_every: 500
