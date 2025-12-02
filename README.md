@@ -83,9 +83,9 @@ Train/eval hyperparameters (learning rate, warm-up, dataset paths, etc.) are ide
 2. **Run the container** with GPUs and mount:
    ```bash
    docker run --gpus all -it \
-     -v /data2/zhu11/FOCUS:/workspace/FOCUS \
-     -v /data2/zhu11/checkpoints:/workspace/checkpoints \
-     -v /data2/zhu11/output:/workspace/output \
+     -v ./FOCUS:/workspace/FOCUS \
+     -v ./checkpoints:/workspace/checkpoints \
+     -v ./output:/workspace/output \
      "$BIONEMO_IMAGE_PATH" bash
    ```
 3. **Set `PYTHONPATH`** to include the BioNeMo vendor subpackages (see Section 1.2).
