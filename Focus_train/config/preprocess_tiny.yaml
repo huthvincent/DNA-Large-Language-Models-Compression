@@ -1,0 +1,7 @@
+- datapaths: ["/workspace/bionemo-framework/workspace/data/tiny.fasta"]
+  output_dir: "/workspace/bionemo-framework/workspace/output/preproc_tiny"
+  output_prefix: "tiny"
+  train_split: 1.0
+  valid_split: 0.0
+  test_split: 0.0
+  overwrite: true

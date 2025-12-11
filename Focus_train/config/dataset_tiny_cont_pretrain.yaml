@@ -1,0 +1,14 @@
+# ---- train ----
+- dataset_prefix: /workspace/bionemo-framework/workspace/output/preproc_tiny/tiny_byte-level_train
+  dataset_split: train
+  dataset_weight: 1.0
+
+# ---- validation ----
+- dataset_prefix: /workspace/bionemo-framework/workspace/output/preproc_tiny/tiny_byte-level_train
+  dataset_split: validation
+  dataset_weight: 1.0
+
+# ---- test ----
+- dataset_prefix: /workspace/bionemo-framework/workspace/output/preproc_tiny/tiny_byte-level_train
+  dataset_split: test
+  dataset_weight: 1.0

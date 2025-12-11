@@ -1,0 +1,6 @@
+adapter_method: lora
+adapter_target_modules: ".*(q_proj|k_proj|v_proj)"
+adapter_lora_rank: 8
+adapter_lora_alpha: 16
+adapter_lora_dropout: 0.05
+freeze_inference: true
